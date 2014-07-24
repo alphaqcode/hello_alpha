@@ -57,4 +57,10 @@ order by gate
 select * from items_bak order by newid()
 
 
-select newid()
+select newid(),LEN(NEWID())
+SELECT LEN('40A65B11-7037-4629-A47F-50D3D7DA1617')
+
+PRINT 'cmd commit but no comment'
+
+PRINT 'git add '
+PRINT 'make some diff'
