@@ -1,0 +1,110 @@
+<?php
+$con = mysql_connect("localhost","peter","abc123");
+if (!$con)
+  {
+  die('Could not connect: ' . mysql_error());
+  }
+if (mysql_query("CREATE DATABASE my_db",$con))
+  {
+  echo "Database created";
+  }
+else
+  {
+  echo "Error creating database: " . mysql_error();
+  }
+  
+// Create table in my_db database
+mysql_select_db("my_db", $con);
+$sql = "CREATE TABLE Persons 
+(
+FirstName varchar(15),
+LastName varchar(15),
+Age int
+)";
+mysql_query($sql,$con);
+
+mysql_query("INSERT INTO Persons (FirstName, LastName, Age) 
+VALUES ('Peter', 'Griffin', '35')");
+
+mysql_query("INSERT INTO Persons (FirstName, LastName, Age) 
+VALUES ('Glenn', 'Quagmire', '33')");
+
+$result = mysql_query("SELECT * FROM Persons");
+
+while($row = mysql_fetch_array($result))
+  {
+  echo $row['FirstName'] . " " . $row['LastName'];
+  echo "<br />";
+  }
+  
+  mysql_query("UPDATE Persons SET Age = '36'
+WHERE FirstName = 'Peter' AND LastName = 'Griffin'");
+// some code
+mysql_close($con);
+?>
+
+
+
+<html>
+<body>
+
+<form action="insert.php" method="post">
+Firstname: <input type="text" name="firstname" />
+Lastname: <input type="text" name="lastname" />
+Age: <input type="text" name="age" />
+<input type="submit" />
+</form>
+
+</body>
+</html>
+
+<?php
+$con = mysql_connect("localhost","peter","abc123");
+if (!$con)
+  {
+  die('Could not connect: ' . mysql_error());
+  }
+
+mysql_select_db("my_db", $con);
+
+$sql="INSERT INTO Persons (FirstName, LastName, Age)
+VALUES
+('$_POST[firstname]','$_POST[lastname]','$_POST[age]')";
+
+if (!mysql_query($sql,$con))
+  {
+  die('Error: ' . mysql_error());
+  }
+echo "1 record added";
+
+mysql_close($con)
+?>
+
+
+<html>
+<body>
+
+<?php//ODBC
+$conn=odbc_connect('northwind','','');
+if (!$conn)
+  {exit("Connection Failed: " . $conn);}
+$sql="SELECT * FROM customers";
+$rs=odbc_exec($conn,$sql);
+if (!$rs)
+  {exit("Error in SQL");}
+echo "<table><tr>";
+echo "<th>Companyname</th>";
+echo "<th>Contactname</th></tr>";
+while (odbc_fetch_row($rs))
+{
+  $compname=odbc_result($rs,"CompanyName");
+  $conname=odbc_result($rs,"ContactName");
+  echo "<tr><td>$compname</td>";
+  echo "<td>$conname</td></tr>";
+}
+odbc_close($conn);
+echo "</table>";
+?>
+
+</body>
+</html>
