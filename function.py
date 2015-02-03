@@ -1,4 +1,4 @@
-#normal function
+﻿#normal function
 def my_abs(x):
     if not isinstance(x,(int,float)):
         raise TypeError('bad operand type')
@@ -22,3 +22,10 @@ def add_end(L=None):
         L = []
     L.append('END')
     return L
+
+#可变参数
+def calc(*numbers):
+    sum = 0
+    for n in numbers:
+        sum = sum + n*n
+    return sum
