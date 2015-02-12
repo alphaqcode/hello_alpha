@@ -1,7 +1,10 @@
 ﻿#函数式编程
-
-#传入函数
-def add(x,y,f):
+
+
+
+#传入函数
+
+def add(x,y,f):
     return f(x)+f(y)
 
 add(-5,6,abs)
@@ -44,4 +47,48 @@ def is_odd(n):
     return n%2 == 1
 
 filter(is_odd,[1,2,3,4,5,6,7,8,9])
+
+
+##sorted
+def cmp_ignore_case(s1,s2):
+    u1 = s1.upper()
+    u2 = s2.upper()
+    if u1 < u2:
+        return -1
+    if u1 > u2:
+        return 1
+    return 0
+
+sorted(['bob','about','Zoo','Credit','Alpha'],cmp_ignore_case)
+
+
+##返回函数
+def lazy_sum(*args):
+    def sum():
+        ax = 0
+        for n in args:
+            ax = ax + n
+        return ax
+    return sum
+
+
+f = lazy_sum(1,3,5,7,9)
+f()
+
+f1 = lazy_sum(1,3,5)
+f2 = lazy_sum(1,3,5)
+f1 == f2
+
+
+##匿名函数
+map(lambda x: x*x,[1,2,3,4,5,6])
+
+
+##decorator  待搞懂
+
+##偏函数
+
+
+
+
 
