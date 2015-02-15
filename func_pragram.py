@@ -63,7 +63,8 @@ sorted(['bob','about','Zoo','Credit','Alpha'],cmp_ignore_case)
 
 
 ##返回函数
-def lazy_sum(*args):
+
+def lazy_sum(*args):
     def sum():
         ax = 0
         for n in args:
@@ -85,8 +86,10 @@ map(lambda x: x*x,[1,2,3,4,5,6])
 
 
 ##decorator  待搞懂
-
-##偏函数
+
+
+
+##偏函数
 
 
 
