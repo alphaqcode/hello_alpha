@@ -13,8 +13,10 @@ l[-10:]
 
 l[:10:3]
 
-
-#迭代
+
+
+
+#迭代
 d = {'a':'sean','b':'dustin','c':'luolu'}
 for key in d:
     print key
@@ -37,8 +39,10 @@ for i,value in enumerate(['sean','dustin','luolu']):
     print i,value
 
 
-
-#列表生成式
+
+
+
+#列表生成式
 t = range(100)
 t = range(1,11)
 
@@ -54,15 +58,21 @@ import os
 
 L = ['SEAN','DUSTIN']
 [s.lower() for s in L]
-
-
-#生成器
+
+
+
+
+
+#生成器
 def fib(max):
     n, a, b = 0, 0, 1
     while n < max:
         yield b
         a, b = b, a + b
         n = n + 1
+
+
+fib(10)
 
 
 

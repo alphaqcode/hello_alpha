@@ -17,6 +17,16 @@ def func2(a,b,c):
     return a+b+c
 
 
+@deco
+def func3(x,y):
+    print('func3 is calling')
+    return x + y
+
+
+
 func(1,2)
 func2(1,2,3)
+func2(2,3,4)
+func3(6,7)
+
 

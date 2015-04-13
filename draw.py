@@ -29,4 +29,5 @@ image.save('code_nature.jpg','jpeg')
 image = image.filter(ImageFilter.BLUR)
 image.save('code.jpg','jpeg')
 
+print "confirm code"
 
